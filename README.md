@@ -3,10 +3,12 @@
 EchoSpace is a full-stack blog application designed to provide a clean reading experience for guests and a powerful content management interface for the admin. Built with React, Tailwind CSS, Node.js, Express, and PostgreSQL, it offers a seamless blend of performance, aesthetics, and functionality.
 
 ## 🚀 Tech Stack
+```
 Frontend: React, Tailwind CSS
 Backend: Node.js, Express.js
 Database: PostgreSQL
 Database Management: pgAdmin
+```
 ## 🌐 Guest Section
 These pages are publicly accessible and provide a smooth reading experience:
 
