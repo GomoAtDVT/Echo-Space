@@ -1,9 +1,40 @@
+import axios from "axios";
 import Search from "../../components/ExploreComps/Search";
 import TrendingCarousel from "../../components/ExploreComps/TrendingCarousel";
 import FeaturedBlogs from "../../components/LandingComps/FeaturedBlogs";
 import BottomNavigation from "../../components/Navigation/BottomNavigation/BottomNavigation";
+import { useEffect, useState } from "react";
 
 export default function Explore() {
+  const [ worldNews, setWorldNews] = useState([]);
+  
+  console.log("World news " ,worldNews);
+  let apiKey = import.meta.env.VITE_NEWS_API_KEY;
+  
+  async function getWorldNews(query) {
+
+  try {
+    const response = await axios.get('https://api.worldnewsapi.com/search-news', {
+      params: {
+        text: query,
+        language: 'en',
+        number: 10
+      },
+      headers: {
+        'X-API-KEY': `${apiKey}`
+      }
+    });
+    
+    setWorldNews(response.data.news)
+  } catch (error) {
+    console.error('Failed to fetch news:', error);
+  }
+}
+
+// Usage
+// useEffect(()=> {
+//   getWorldNews('technology')
+// },[])
   return (
     <>
       <section className="flex flex-col h-screen ">

@@ -6,7 +6,7 @@ export default function BottomNavigation() {
   const [pageLocation, setPageLocation] = useState(window.location.pathname);
 
   function goHome() {
-    navigate("/");
+    navigate("/home");
   }
   function exploreBlogs() {
     navigate("/explore");
@@ -109,9 +109,9 @@ export default function BottomNavigation() {
         >
           <div className="avatar avatar-placeholder">
             <div className="bg-neutral text-neutral-content w-8 rounded-full">
-              {sessionStorage.getItem("username") ? (
+              {localStorage.getItem('userToken') ? (
                 <span className="text-xs">
-                  {sessionStorage.getItem("username").charAt(0).toUpperCase()}
+                  {localStorage.getItem("userToken").charAt(0).toUpperCase()}
                 </span>
               ) : (
                 <div className="w-24 rounded-full">
