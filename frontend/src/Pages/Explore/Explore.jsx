@@ -32,9 +32,9 @@ export default function Explore() {
 }
 
 // Usage
-// useEffect(()=> {
-//   getWorldNews('technology')
-// },[])
+useEffect(()=> {
+  getWorldNews('technology')
+},[])
   return (
     <>
       <section className="flex flex-col h-screen ">
@@ -46,14 +46,12 @@ export default function Explore() {
         </search>
         <article className="m-4 mr-0">
           <h1 className="text-2xl font-bold">Trending</h1>
-            <TrendingCarousel />
+            <TrendingCarousel worldNews={worldNews} />
         </article>
         <section>
           <article className="m-4 mr-0">
             <h1 className="text-2xl font-bold">Recommended</h1>
-          <FeaturedBlogs />
-          <FeaturedBlogs />
-          <FeaturedBlogs />
+          <FeaturedBlogs worldNews={worldNews}/>
           </article>
         </section>
       </section>

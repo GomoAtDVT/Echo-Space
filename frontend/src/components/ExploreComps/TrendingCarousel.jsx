@@ -1,8 +1,9 @@
-export default function TrendingCarousel() {
+export default function TrendingCarousel({worldNews}) {
   return (
     <>
       <div className="carousel carousel-center rounded-box max-w-md w-90 h-full  space-x-4 p-4">
-        <div className="carousel-item w-60 h-30 flex flex-col">
+      {worldNews.length === 0 ? 
+        (<><div className="carousel-item w-60 h-30 flex flex-col">
           <img
             src="https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.webp"
             className="rounded-box w-full h-full object-cover"
@@ -57,8 +58,23 @@ export default function TrendingCarousel() {
           />
           <p className="font-bold">Title</p>
           <p className="text-sm">Description</p>
-        </div>
-      </div>
+        {/* </div> */}
+      </div></>)
+      : 
+        // <div  className="carousel carousel-center rounded-box max-w-md w-90 h-20  space-x-4 p-4">
+          worldNews.map((blog , indx) => (
+        <div key={indx} className="carousel-item w-60 h-30 flex flex-col">
+          <img
+            src={blog.image}
+            className="rounded-box w-90 h-20 object-cover"
+          />
+          <p className="font-bold truncate w-50">{blog.title}</p>
+          <p className="text-sm truncate w-50">{blog.summary}</p>
+      </div>)
+    )
+    
+  }
+   </div>
     </>
   );
 }

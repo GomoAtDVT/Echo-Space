@@ -14,7 +14,7 @@ export default function DetailedBlog(){
         </section>)) :<section className="flex flex-col m-4 gap-4">
             <h1 className="font-bold text-lg">{location.state.title}</h1>
             <p className="text-gray-400">By Alex Turner · 2d ago</p>
-            <p>{location.state.content}</p>
+            <p>{location.state.content || location.state.text}</p>
         </section>}
         </>
     )
