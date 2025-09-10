@@ -13,14 +13,6 @@ export default function Home() {
             </div>
             <article>
             <HomeBlog />
-            <HomeBlog />
-            <HomeBlog />
-            <HomeBlog />
-            <HomeBlog />
-            <HomeBlog />
-            <HomeBlog />
-            <HomeBlog />
-            <HomeBlog />
             </article>
             <BottomNavigation />
             </section>

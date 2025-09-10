@@ -12,6 +12,8 @@ import NoPage from "./Pages/Errors/NoPage.jsx";
 import Home from "./Pages/Home/Home.jsx";
 import Explore from "./Pages/Explore/Explore.jsx";
 import DetailedBlog from "./components/HomeComps/DetailedBlog.jsx";
+import LoggingCheck from "./middleware/LogginCheck.jsx";
+import EditPost from "./components/DashboardComps/EditPost.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -21,12 +23,14 @@ createRoot(document.getElementById("root")).render(
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/explore" element={<Explore />} />
+        <Route element={<LoggingCheck />}>
         <Route path="/home" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/create-blog" element={<CreateBlog />} />
-        <Route path="/explore" element={<Explore />} />
         <Route path="/detailed-blog" element={<DetailedBlog />} />
-
+        <Route path="/edit-blog" element={<EditPost />} />
+        </Route>
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>

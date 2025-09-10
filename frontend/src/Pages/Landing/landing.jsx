@@ -12,7 +12,7 @@ export default function Landing(){
         <>
         <Header />
         <LandingBody />
-        <BottomNavigation />
+        {/* <BottomNavigation /> */}
         </>
     )
 }
