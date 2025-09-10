@@ -1,7 +1,9 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function BottomNavigation() {
+  const [me, setMe] = useState([]);
   const navigate = useNavigate();
   const [pageLocation, setPageLocation] = useState(window.location.pathname);
 
@@ -14,6 +16,24 @@ export default function BottomNavigation() {
   function toProfile() {
     navigate("/dashboard");
   }
+  async function user() {
+    try {
+      try{
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('userToken')}`;
+    const response = await axios.get('http://localhost:5000/api/myProfile');
+    setMe(response.data);
+  }catch(error){
+    console.log("error fetching user: " , error)
+    navigate("/login")
+  }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    user();
+  }, []);
   return (
     <>
       <footer className="dock dock-lg">
@@ -111,7 +131,7 @@ export default function BottomNavigation() {
             <div className="bg-neutral text-neutral-content w-8 rounded-full">
               {localStorage.getItem('userToken') ? (
                 <span className="text-xs">
-                  {localStorage.getItem("userToken").charAt(0).toUpperCase()}
+                  {me.map((me) => me.username.charAt(0).toUpperCase())}
                 </span>
               ) : (
                 <div className="w-24 rounded-full">

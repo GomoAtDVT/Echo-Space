@@ -65,7 +65,7 @@ export default function TrendingCarousel({worldNews}) {
           worldNews.map((blog , indx) => (
         <div key={indx} className="carousel-item w-60 h-30 flex flex-col">
           <img
-            src={blog.image}
+            src={blog.image || "https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.webp"}
             className="rounded-box w-90 h-20 object-cover"
           />
           <p className="font-bold truncate w-50">{blog.title}</p>
