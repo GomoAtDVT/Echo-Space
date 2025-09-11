@@ -14,8 +14,8 @@ export const client = new Client({
 
 client.connect().then(() => console.log("Connected to the database")).catch((err) => console.log(err.message));
 
-
-app.use(express.json(), cors());
+app.use( cors());
+app.use(express.json());
 app.use("/api", AllRoutes);
 
 app.use((req, res, next) => {
