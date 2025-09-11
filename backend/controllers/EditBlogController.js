@@ -9,8 +9,8 @@ export const EditBlogController = (req, res) => {
         if (!err) {
             res.json("Your blog has been edited");
         }else{
-            console.log(err);
+            console.log(err); 
             res.status(500).json({ error: "Failed to edit blog" });
         } 
     });
-}
+}  

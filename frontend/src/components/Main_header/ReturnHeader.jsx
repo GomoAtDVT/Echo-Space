@@ -9,9 +9,9 @@ export default function ReturnHeader() {
     return (
         <>
         <div className="flex justify-between items-center py-2 pl-2 w-[64%] sticky top-0">
-          <button onClick={returnToPage} >
+          {/* <button onClick={returnToPage} >
             <i className="bi bi-arrow-left"></i>
-          </button>
+          </button> */}
           <p className="text-xl">Echo Space</p>
         </div>
         </>
