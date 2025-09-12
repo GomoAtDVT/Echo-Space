@@ -22,7 +22,7 @@ export const ViewProfileController = (req, res) => {
       res.status(500).json({ error: "Failed to fetch profile" });
     }
   });
-};
+}; 
 export const ViewMyProfileController = (req, res) => {
   const user_id = req.user && req.user.id;
   const single_query = `SELECT * FROM users WHERE id = $1`;

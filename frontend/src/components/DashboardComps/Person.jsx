@@ -11,7 +11,7 @@ const navigate = useNavigate();
   async function fetchUser() {
     try{
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('userToken')}`;
-    const response = await axios.get('http://localhost:5000/api/myProfile');
+    const response = await axios.get('https://echo-space-eecg.onrender.com/api/myProfile');
     setMe(response.data);
   }catch(error){
     console.log("error fetching user: " , error)

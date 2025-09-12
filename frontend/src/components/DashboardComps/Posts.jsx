@@ -9,7 +9,7 @@ export default function Posts() {
     async function fetchMyPosts(){
       try{
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('userToken')}`;
-       const response = await axios.get('http://localhost:5000/api/myBlogs');
+       const response = await axios.get('https://echo-space-eecg.onrender.com/api/myBlogs');
         setMyPosts(response.data);
         
       }catch(error){
@@ -20,7 +20,7 @@ export default function Posts() {
     async function deletePost(id){
       try{
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('userToken')}`;
-       await axios.delete(`http://localhost:5000/api/blog/${id}`);
+       await axios.delete(`https://echo-space-eecg.onrender.com/api/blog/${id}`);
        await fetchMyPosts();
       }catch(error){
         console.log("error deleting post: " , error);

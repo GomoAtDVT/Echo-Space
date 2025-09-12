@@ -2,21 +2,47 @@ import axios from "axios";
 import Header from "../../components/Main_header/Header";
 import ReturnHeader from "../../components/Main_header/ReturnHeader";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function CreateBlog() {
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  const fetchBlogs = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/blogs`);
+      console.log('Blogs data:', response.data); // Debug data
+      setBlogs(response.data);
+    } catch (error) {
+      console.error('Error fetching blogs:', error);
+      setError(error.response?.data?.message || 'Failed to fetch blogs');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   async function createBlog(event){
     const formTitle = event.get('title');
     const formMessage = event.get('message');
 
    try { 
-    axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem("userToken")}`;
-    await axios.post('http://localhost:5000/api/blog',
+    const token = localStorage.getItem('token'); // Get stored token
+    await axios.post(
+      `${import.meta.env.VITE_API_URL}/blogs`, 
       { 
         title : formTitle,
         content: formMessage
+      },
+      {
+        headers: {
+          'Authorization': `Bearer ${token}`, // Include auth token
+          'Content-Type': 'application/json'
+        }
       }
-    )
+    );
     navigate('/home')
   }catch(error){
       console.log("error creating blog: " , error)

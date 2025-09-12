@@ -22,10 +22,6 @@ export default function LandingBody() {
             <section className="flex flex-col ">
                 <h1 className="flex pt-2 px-4 text-4xl">Featured Blogs</h1>
                 <FeaturedBlogs />
-                <FeaturedBlogs />
-                <FeaturedBlogs />
-                <FeaturedBlogs />
-                <FeaturedBlogs />
             </section>
         </main>
         </>

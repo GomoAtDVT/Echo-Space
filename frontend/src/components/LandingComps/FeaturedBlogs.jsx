@@ -7,7 +7,7 @@ export default function FeaturedBlogs({ worldNews }) {
     }
     return (
         <>
-        { worldNews.length === 0 ?<section className="flex flex-row py-6 mx-2 gap-1 border-b border-gray-700">
+        { !worldNews ?<section className="flex flex-row py-6 mx-2 gap-1 border-b border-gray-700">
             <div className="w-[100%]">
                 <p className="text-gray-600">Technology</p>
                 <p className="text-xl font-medium">The Future of AI in everyday life</p>

@@ -14,7 +14,7 @@ export default function HomeBlog(){
     async function AllBlogs(){
         try{
             axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('userToken')}`;
-       const response = await axios.get('http://localhost:5000/api/blogs')
+       const response = await axios.get('https://echo-space-eecg.onrender.com/api/blogs')
          setAllBlogs(response.data)}catch(error){
             console.log("error fetching blogs: " , error)
             navigate("/login")

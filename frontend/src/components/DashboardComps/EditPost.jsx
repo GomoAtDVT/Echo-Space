@@ -19,7 +19,7 @@ export default function EditPost(){
     async function updatePost(){
         try{
             axios.defaults.headers.common['Authorization']= `Bearer ${localStorage.getItem('userToken')}`;
-            await axios.patch(`http://localhost:5000/api/blogs/${location.state.id}`,{
+            await axios.patch(`https://echo-space-eecg.onrender.com/api/blogs/${location.state.id}`,{
                 title: editBlog.title,
                 content: editBlog.content
             });
