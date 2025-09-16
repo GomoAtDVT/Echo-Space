@@ -13,7 +13,7 @@ export default function Login() {
       try{
         const formEmail = event.get('email');
         const formPassword = event.get('password');
-        const response = await axios.post('http://localhost:5000/api/login', {
+        const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/login`, {
           email: formEmail,
           password: formPassword
         })

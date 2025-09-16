@@ -4,6 +4,7 @@ import { useState } from "react";
 import   firstLetterUppercase   from "../../utils/reusables.js";
 import firstLetterCaps from "../../utils/reusables.js";
 import { useNavigate } from "react-router-dom";
+import 'dotenv'
 
 export default function Person() {
 const [me, setMe] = useState([]);
@@ -11,7 +12,7 @@ const navigate = useNavigate();
   async function fetchUser() {
     try{
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('userToken')}`;
-    const response = await axios.get('https://echo-space-eecg.onrender.com/api/myProfile');
+    const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/myProfile`);
     setMe(response.data);
   }catch(error){
     console.log("error fetching user: " , error)

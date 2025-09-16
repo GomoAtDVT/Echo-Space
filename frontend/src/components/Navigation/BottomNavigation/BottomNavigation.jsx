@@ -19,8 +19,8 @@ export default function BottomNavigation() {
   async function user() {
     try {
       try{
-    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('userToken')}`;
-    const response = await axios.get('https://echo-space-eecg.onrender.com/api/myProfile');
+    axios.defaults.headers.common['authorization'] = `Bearer ${localStorage.getItem('userToken')}`;
+    const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/myProfile`);
     setMe(response.data);
   }catch(error){
     console.log("error fetching user: " , error)

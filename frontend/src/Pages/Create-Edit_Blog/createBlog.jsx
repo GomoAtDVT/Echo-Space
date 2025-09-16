@@ -13,7 +13,7 @@ export default function CreateBlog() {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/blogs`);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/blogs`);
       console.log('Blogs data:', response.data); // Debug data
       setBlogs(response.data);
     } catch (error) {
@@ -31,7 +31,7 @@ export default function CreateBlog() {
    try { 
     const token = localStorage.getItem('token'); // Get stored token
     await axios.post(
-      `${import.meta.env.VITE_API_URL}/blogs`, 
+      `${import.meta.env.VITE_API_URL}/api/blogs`, 
       { 
         title : formTitle,
         content: formMessage

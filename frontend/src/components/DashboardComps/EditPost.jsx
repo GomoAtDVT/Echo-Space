@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import 'dotenv'
 
 export default function EditPost(){
     const navigate = useNavigate();
@@ -19,7 +20,7 @@ export default function EditPost(){
     async function updatePost(){
         try{
             axios.defaults.headers.common['Authorization']= `Bearer ${localStorage.getItem('userToken')}`;
-            await axios.patch(`https://echo-space-eecg.onrender.com/api/blogs/${location.state.id}`,{
+            await axios.patch(`${import.meta.env.VITE_API_URL}/api/blogs/${location.state.id}`,{
                 title: editBlog.title,
                 content: editBlog.content
             });

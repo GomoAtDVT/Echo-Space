@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import 'dotenv'
 
 export default function Posts() {
     const navigate = useNavigate();
@@ -9,7 +10,7 @@ export default function Posts() {
     async function fetchMyPosts(){
       try{
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('userToken')}`;
-       const response = await axios.get('https://echo-space-eecg.onrender.com/api/myBlogs');
+       const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/myBlogs`);
         setMyPosts(response.data);
         
       }catch(error){
@@ -20,7 +21,7 @@ export default function Posts() {
     async function deletePost(id){
       try{
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('userToken')}`;
-       await axios.delete(`https://echo-space-eecg.onrender.com/api/blog/${id}`);
+       await axios.delete(`${process.env.VITE_API_URL}/api/blog/${id}`);
        await fetchMyPosts();
       }catch(error){
         console.log("error deleting post: " , error);

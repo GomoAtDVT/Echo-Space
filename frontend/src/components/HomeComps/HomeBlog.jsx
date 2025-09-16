@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Navigate, useNavigate } from "react-router-dom"
+import 'dotenv'
 
 export default function HomeBlog(){
     const navigate = useNavigate();
@@ -14,7 +15,7 @@ export default function HomeBlog(){
     async function AllBlogs(){
         try{
             axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('userToken')}`;
-       const response = await axios.get('https://echo-space-eecg.onrender.com/api/blogs')
+       const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/blogs`)
          setAllBlogs(response.data)}catch(error){
             console.log("error fetching blogs: " , error)
             navigate("/login")
