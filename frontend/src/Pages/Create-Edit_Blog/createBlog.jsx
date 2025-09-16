@@ -29,7 +29,7 @@ export default function CreateBlog() {
     const formMessage = event.get('message');
 
    try { 
-    const token = localStorage.getItem('token'); // Get stored token
+    const token = localStorage.getItem('userToken'); // Get stored token
     await axios.post(
       `${import.meta.env.VITE_API_URL}/api/blog`, 
       { 
@@ -38,7 +38,7 @@ export default function CreateBlog() {
       },
       {
         headers: {
-          'Authorization': `Bearer ${token}`, // Include auth token
+          'authorization': `Bearer ${token}`, // Include auth token
           'Content-Type': 'application/json'
         }
       }
